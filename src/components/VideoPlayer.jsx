@@ -72,6 +72,7 @@ const VideoPlayer = () => {
   };
 
   const handleEditNote = (index) => {
+    setWriteNotes(true);
     setCurrentNote(notes[index].text);
     setImage(notes[index].image || null);
     setCurrentColor(notes[index].color || "#ffffff");
@@ -206,15 +207,16 @@ const VideoPlayer = () => {
             <IoMdDownload size={22} />
           </button>
           {writeNotes && (
-            <>
+            <div className="bg-blue-50 p-4 rounded-lg">
               <ReactQuill
                 value={currentNote}
                 onChange={setCurrentNote}
                 placeholder="Add a note"
+                className="bg-white"
               />
               <div
                 {...getRootProps()}
-                className="border-dashed border-2 border-gray-400 p-4 mt-2 cursor-pointer"
+                className="border-dashed border-2 border-gray-400 p-4 mt-2 cursor-pointer bg-white"
               >
                 <input {...getInputProps()} />
                 {image ? (
@@ -224,7 +226,7 @@ const VideoPlayer = () => {
                 )}
               </div>
               <div className="mt-4 flex">
-                <label className="text-sm text-gray-500 pr-4">
+                <label className="text-sm text-gray-800 pr-4">
                   Select Your Text Color of Your Notes:
                 </label>
                 <input
@@ -236,12 +238,12 @@ const VideoPlayer = () => {
               </div>
 
               <button
-                className="bg-blue-500 text-white py-2 px-4 mt-2"
+                className=" bg-blue-500 text-white flex justify-center mx-auto py-3 px-9 mt-4 rounded-lg"
                 onClick={handleAddNote}
               >
                 {editingNote !== null ? "Update Note" : "Add Note"}
               </button>
-            </>
+            </div>
           )}
 
           <div className="mt-4">
@@ -275,7 +277,7 @@ const VideoPlayer = () => {
                   </div>
                   <div className="flex space-x-2 justify-end p-3">
                     <button
-                      className="text-sm text-gray-500 border border-gray-400 rounded-lg px-2 py-1"
+                      className="text-sm text-gray-500 hover:bg-gray-500 hover:text-white border  border-gray-400 rounded-lg px-2 py-1"
                       onClick={() => {
                         setNoteToDelete(index);
                         setIsDeleteModalOpen(true);
@@ -284,7 +286,7 @@ const VideoPlayer = () => {
                       Delete
                     </button>
                     <button
-                      className="text-sm text-gray-500 border border-gray-400 rounded-lg px-2 py-1"
+                      className="text-sm text-gray-500 hover:bg-gray-500 hover:text-white border border-gray-400 rounded-lg px-2 py-1"
                       onClick={() => handleEditNote(index)}
                     >
                       Edit
