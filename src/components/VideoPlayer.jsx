@@ -265,7 +265,7 @@ const VideoPlayer = () => {
                   </strong>{" "}
                   <div
                     className="flex-1 border border-[#EAECF0] h-full p-4 
-             w-[256px] md:w-[555px] lg:w-[1280px] rounded-lg 
+             w-[226px] md:w-[555px] lg:w-[1280px] rounded-lg 
              overflow-hidden"
                   >
                     <span
