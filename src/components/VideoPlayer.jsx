@@ -66,7 +66,7 @@ const VideoPlayer = () => {
       setNotes(updatedNotes);
       saveNotesToLocalStorage(updatedNotes);
       setCurrentNote("");
-      setCurrentColor("#ffffff");
+      setCurrentColor("#000000");
       setImage(null);
     }
   };
@@ -75,7 +75,7 @@ const VideoPlayer = () => {
     setWriteNotes(true);
     setCurrentNote(notes[index].text);
     setImage(notes[index].image || null);
-    setCurrentColor(notes[index].color || "#ffffff");
+    setCurrentColor(notes[index].color || "#000000");
     setEditingNote(index);
   };
 
