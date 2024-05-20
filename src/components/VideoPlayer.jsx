@@ -264,7 +264,7 @@ const VideoPlayer = () => {
                     </span>
                   </strong>{" "}
                   <div
-                    className="border border-[#EAECF0] p-4 w-[256px] md:w-[555px] lg:w-[1280px]  rounded-lg
+                    className="border border-[#EAECF0] h-full p-4 w-[256px] md:w-[555px] lg:w-[1280px]  rounded-lg
 "
                   >
                     <span
