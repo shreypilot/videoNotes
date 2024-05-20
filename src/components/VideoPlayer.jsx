@@ -16,7 +16,7 @@ const VideoPlayer = () => {
   );
   const [notes, setNotes] = useState([]);
   const [currentNote, setCurrentNote] = useState("");
-  const [currentColor, setCurrentColor] = useState("#ffffff");
+  const [currentColor, setCurrentColor] = useState("#000000");
   const [editingNote, setEditingNote] = useState(null);
   const [image, setImage] = useState(null);
   const playerRef = useRef(null);
