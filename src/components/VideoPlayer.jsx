@@ -7,7 +7,7 @@ import { GoPlusCircle } from "react-icons/go";
 import { AiOutlineMinusCircle } from "react-icons/ai";
 import { jsPDF } from "jspdf";
 import { IoMdDownload } from "react-icons/io";
-import DeleteNoteModal from "./DeleteModal"; 
+import DeleteNoteModal from "./DeleteModal";
 
 const VideoPlayer = () => {
   const [videoId, setVideoId] = useState("dQw4w9WgXcQ");
@@ -264,15 +264,21 @@ const VideoPlayer = () => {
                     </span>
                   </strong>{" "}
                   <div
-                    className="flex-1 border border-[#EAECF0] h-full p-4 w-full md:w-[555px] lg:w-[1280px]  rounded-lg
-"
+                    className="flex-1 border border-[#EAECF0] h-full p-4 
+             w-[256px] md:w-[555px] lg:w-[1280px] rounded-lg 
+             overflow-hidden"
                   >
                     <span
                       dangerouslySetInnerHTML={{ __html: note.text }}
-                      style={{ color: note.color }}
+                      style={{ color: note.color, wordWrap: "break-word" }}
                     ></span>
                     {note.image && (
-                      <img src={note.image} alt="Note" className="mt-2" />
+                      <img
+                        src={note.image}
+                        alt="Note"
+                        className="mt-2"
+                        style={{ maxWidth: "100%", height: "auto" }}
+                      />
                     )}
                   </div>
                   <div className="flex space-x-2 justify-end p-3">
