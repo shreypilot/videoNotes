@@ -1,6 +1,6 @@
 // src/App.js
 import React from "react";
-import VideoPlayer from "./VideoPlayer";
+import VideoPlayer from "./components/VideoPlayer";
 
 function App() {
   return (

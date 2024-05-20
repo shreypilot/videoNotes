@@ -7,6 +7,7 @@ import { GoPlusCircle } from "react-icons/go";
 import { AiOutlineMinusCircle } from "react-icons/ai";
 import { jsPDF } from "jspdf";
 import { IoMdDownload } from "react-icons/io";
+import DeleteNoteModal from "./DeleteModal"; 
 
 const VideoPlayer = () => {
   const [videoId, setVideoId] = useState("dQw4w9WgXcQ");
@@ -20,6 +21,8 @@ const VideoPlayer = () => {
   const [image, setImage] = useState(null);
   const playerRef = useRef(null);
   const [writeNotes, setWriteNotes] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [noteToDelete, setNoteToDelete] = useState(null);
 
   useEffect(() => {
     setVideoUrl(`https://www.youtube.com/watch?v=${videoId}`);
@@ -75,10 +78,12 @@ const VideoPlayer = () => {
     setEditingNote(index);
   };
 
-  const handleDeleteNote = (index) => {
-    const updatedNotes = notes.filter((_, i) => i !== index);
+  const handleDeleteNote = () => {
+    const updatedNotes = notes.filter((_, i) => i !== noteToDelete);
     setNotes(updatedNotes);
     saveNotesToLocalStorage(updatedNotes);
+    setIsDeleteModalOpen(false);
+    setNoteToDelete(null);
   };
 
   const handleTimestampClick = (time) => {
@@ -130,12 +135,12 @@ const VideoPlayer = () => {
   };
 
   return (
-    <div className="container mx-auto px-[32px] p-8 space-y-8 max-w-[1440px] pt-[32px] pb-[48px] ">
+    <div className="container mx-auto px-[32px] p-8  max-w-[1440px]  ">
       <h1 className="h-[38px] text-2xl font-semibold text-gray-800 underline">
         Video Player with Notes
       </h1>
 
-      <div className="flex flex-col gap-[32px]">
+      <div className="flex flex-col gap-[32px] py-8">
         <div className="flex flex-col">
           <label className="text-lg font-bold pb-2">
             Enter YouTube Video ID:
@@ -171,7 +176,7 @@ const VideoPlayer = () => {
         </div>
       </div>
       <div>
-        <div className=" h-full rounded-2xl p-6 border border-[#EAECF0] flex flex-col gap-[24px] shadow-sm shadow-[#101828]">
+        <div className=" h-full rounded-2xl pb-8 p-6 border border-[#EAECF0] flex flex-col gap-[24px] shadow-sm shadow-[#101828]">
           <div className="flex flex-col   gap-[4px] w-full ">
             <div className="flex flex-col md:flex-row justify-between ">
               <div className="flex flex-col gap-[12px]">
@@ -271,7 +276,10 @@ const VideoPlayer = () => {
                   <div className="flex space-x-2 justify-end p-3">
                     <button
                       className="text-sm text-gray-500 border border-gray-400 rounded-lg px-2 py-1"
-                      onClick={() => handleDeleteNote(index)}
+                      onClick={() => {
+                        setNoteToDelete(index);
+                        setIsDeleteModalOpen(true);
+                      }}
                     >
                       Delete
                     </button>
@@ -288,6 +296,13 @@ const VideoPlayer = () => {
           </div>
         </div>
       </div>
+
+      {isDeleteModalOpen && (
+        <DeleteNoteModal
+          onClose={() => setIsDeleteModalOpen(false)}
+          onDelete={handleDeleteNote}
+        />
+      )}
     </div>
   );
 };
