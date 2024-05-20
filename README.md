@@ -111,6 +111,11 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 
 For questions or support, please contact [shreypilot28@gmail.com].
 
+## Live Demo
+The application is deployed on Vercel. You can access it at [https://video-notes-ivory.vercel.app/].
+
+By following this README, you should be able to set up, run, and use the video player with notes application effectively. Enjoy!
+
 ---
 
 By following this README, you should be able to set up, run, and use the video player with notes application effectively. Enjoy!
